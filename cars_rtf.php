@@ -1,8 +1,15 @@
 <?php
 require_once 'includes/cars_pdo_end.php';
+
 require 'vendor/autoload.php';
 
 if (isset($_POST['download'])) {
+    try {
+        $rtf = new PHPRtfLite();
+        $rtf->setMargins(2.54, 2.54, 2.54, 2.54);
+    } catch (Exception $e) {
+        $error = $e->getMessage();
+    }
 
 }
 ?>

@@ -1,11 +1,13 @@
 <?php
-require_once 'src/Foundationphp/Psr4AutoLOader.php';
+//require_once 'src/Foundationphp/Psr4AutoLOader.php';
+//
+//$loader = new Foundationphp\Psr4Autoloader();
+//$loader->register();
+//$loader->addNamespace('Foundationphp', 'src/Foundationphp');
 
-$loader = new Foundationphp\Psr4Autoloader();
-$loader->register();
-$loader->addNamespace('Foundationphp', 'src/Foundationphp');
+require 'vendor/autoload.php';
 
-//use Foundationphp\Exporter\Csv;
+use Foundationphp\Exporter\Csv;
 use Foundationphp\Exporter\Text;
 
 require_once 'includes/cars_pdo_end.php';
@@ -14,8 +16,8 @@ if(isset($_POST['download'])){
     try {
         $options['suppress'] = 'car_id, transmission';
         $options['labelcase'] = 'strtoupper';
-        $options['local'] = true;
-        new Text($result, 'includes/cars_class.txt', $options);
+        $options['local'] = false;
+        new Text($result, 'cars_class.txt', $options);
      
 //        new Csv($result,'download.csv',
 //                ['delimiter' => ';',
